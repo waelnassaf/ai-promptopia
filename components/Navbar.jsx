@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Nav = () => {
+    //This is extracting data prop from the returned object of useSession()
+    //and assigns it to a variable named session.
     const { data: session } = useSession();
 
     const [providers, setProviders] = useState(null);
@@ -14,7 +16,6 @@ const Nav = () => {
     useEffect(() => {
         const setUpProviders = async () => {
             const response = await getProviders()
-
             setProviders(response)
         }
         setUpProviders()
